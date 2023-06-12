@@ -12,8 +12,10 @@
   "dependencies": {
     "@astrojs/preact": "^2.2.1",
     "@astrojs/rss": "^2.4.3",
+    "@types/marked": "^5.0.0",
     "astro": "^2.5.6",
     "canvas-confetti": "^1.6.0",
+    "marked": "^5.1.0",
     "preact": "^10.6.5"
   }
 }

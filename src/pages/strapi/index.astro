@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "@components/BlogPost.astro";
+
+import fetchApi from "../../lib/strapi";
+import type Article from "../../interfaces/article";
+
+const pageTitle = "My Astro Learning Blog";
+
+const articles = await fetchApi<Article[]>({
+  endpoint: "articles", // the content type to fetch
+  wrappedByKey: "data", // the key to unwrap the response
+});
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where I will combine Strapi and Astro! 🎉</p>
+  <ul>
+    {
+      articles.map((article) => (
+        <BlogPost
+          url={article.attributes.slug}
+          title={article.attributes.title}
+          author={article.attributes.author}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>
